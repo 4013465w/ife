@@ -1,0 +1,15 @@
+.select fieldset{
+	display: inline-block;
+}
+
+.aqi-chart-wrap div{
+	float: left;
+}
+.title{
+	text-align: center;
+	float: none;
+}
+li{
+	display: inline-block;
+	border: 1px solid #FFF;
+}
