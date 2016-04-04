@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Task 18</title>
+  <style>
+    #result div {
+      margin: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: #FFF;
+      text-align: center;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="number" />
+    <button id="left-in">左侧入</button>
+    <button id="right-in">右侧入</button>
+    <button id="left-out">左侧出</button>
+    <button id="right-out">右侧出</button>
+  </div>
+  <div id="result"></div>
+  <script>
+    $ = function(element) {
+      return document.querySelector(element);
+    }
+    var data = [];
+    function getInput(){
+      var input = $('input').value;
+      if (input != '') {
+        return input;
+      }else{
+        throw new Error('input error');
+      }
+    }
+     function render() {
+      $('#result').innerHTML =
+        data.map(function(da) { return "<div>" + da + "</div>"; })
+          .join('');
+    }
+
+    $('#left-in').onclick = function () {
+      data.unshift(getInput());
+      render();
+    }
+    $('#right-in').onclick = function () {
+      data.push(getInput());
+      render();
+    }
+    $('#left-out').onclick = function (argument) {
+      data.shift();
+      render();
+    }
+    $('#right-out').onclick = function (argument) {
+      data.pop();
+      render();
+     }
+     $('#result').onclick = function (event) {
+        var clickNode = event.target;
+        var index = [].indexOf.call(clickNode.parentNode.children, clickNode);
+        data.splice(index,1);
+        render();
+     }
+  </script>
+</body>
+</html>
